@@ -61,7 +61,7 @@ class my_list{
 			tail=nullptr;
 
 			for(int i=0;i<source.node_count;i++){
-				append(source.get_data(i));
+				append(source[i]);
 			}
 			return *this;
 		}
