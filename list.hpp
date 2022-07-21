@@ -48,7 +48,7 @@ class my_list{
 			return o;
 		}
 
-		const my_list<T>& operator= (const my_list<T> &source){
+		my_list<T>& operator= (const my_list<T> &source){
 			if(head == source.head){return *this;}
 
 			node *temp;
@@ -63,7 +63,7 @@ class my_list{
 			tail=nullptr;
 
 			for(int i=0;i<source.node_count;i++){
-				append(source[i]);
+				append(source.get_data(i));
 			}
 			return *this;
 		}
@@ -74,6 +74,16 @@ class my_list{
 			else{node_number = node_count + index + 1;}
 			if(node_number>node_count){node_number=node_count;}
 			node *temp = head;
+			for (int i=2;i<=node_number;i++){
+				temp = temp->link;
+			}
+			return temp->data;
+		}
+
+		const T& get_data (const int &index)const{
+			int node_number = index + 1;
+			if(node_number>node_count){node_number=node_count;}
+			const node *temp = head;
 			for (int i=2;i<=node_number;i++){
 				temp = temp->link;
 			}
@@ -180,7 +190,7 @@ class my_list{
 			return;
 		}
 
-		int node_counter()const{
+		const int& node_counter()const{
 			return node_count;
 		}
 
