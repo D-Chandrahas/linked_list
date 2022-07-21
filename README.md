@@ -1,1 +1,1 @@
-Class template for a singly-linked list
+Template class for a singly-linked list
