@@ -1,0 +1,1 @@
+Class template for a singly-linked list
