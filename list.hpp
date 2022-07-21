@@ -33,13 +33,14 @@ class my_list{
 				head = head->link;
 				delete temp;
 			}
+			node_count = 0;
 		}
 
 		friend std::ostream& operator<< (std::ostream &o, const my_list<T> &list) {
 			if(list.node_count == 0){return o;}
 			const node *temp = list.head;
 			o << "[" << temp->data;
-			for (int i=2;i<=list.node_count;i++){
+			for (int i=1;i<list.node_count;i++){
 				temp = temp->link;
 				o << ", " << temp->data;
 			}
@@ -56,6 +57,7 @@ class my_list{
 				head = head->link;
 				delete temp;
 			}
+			node_count = 0;
 
 			head=nullptr;
 			tail=nullptr;
@@ -201,6 +203,17 @@ class my_list{
 			prev_head->link = nullptr;
 			tail = prev_head;
 			if(node_count == 2){head = temp1;}
+			return;
+		}
+
+		void clear(){
+			node *temp;
+			while(head != nullptr){
+				temp = head;
+				head = head->link;
+				delete temp;
+			}
+			node_count = 0;
 			return;
 		}
 };
