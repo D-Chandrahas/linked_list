@@ -32,8 +32,8 @@
 *.app
 
 #previous versions
-list - [0-9].h
-list - [0-9].hpp
+list - *.h
+list - *.hpp
 
 #test files
-test[0-9].cpp
+test*.cpp

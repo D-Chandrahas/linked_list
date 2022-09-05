@@ -195,24 +195,17 @@ class my_list{
 		}
 
 		void reverse(){
-			if(node_count <=1){return;}
-			node *temp1,*temp2,*prev_head = head;
-			for(int i=node_count;i>=3;i--){
-				temp1 = prev_head;
-				for(int j=2;j<=i-1;j++){
-					temp1 = temp1->link;
-				}
-				temp2 = temp1;
-				temp1 = temp1->link;
-				temp1->link = temp2;
-				if(i==node_count){head = temp1;}
+			if(node_count <= 1){return;}
+			node *curr=head,*prev=nullptr,*next=head->link;
+			while(next != nullptr){
+				curr->link = prev;
+				prev = curr;
+				curr = next;
+				next = next->link;
 			}
-			temp1 = prev_head;
-			temp1 = temp1->link;
-			temp1->link = prev_head;
-			prev_head->link = nullptr;
-			tail = prev_head;
-			if(node_count == 2){head = temp1;}
+			curr->link = prev;
+			tail = head;
+			head = curr;
 			return;
 		}
 
