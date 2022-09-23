@@ -17,6 +17,16 @@ class my_list{
 			T data;
 			node *link;
 		}*head,*tail;
+	
+		const T& get_data (const int &index)const{
+			int node_number = index + 1;
+			if(node_number>node_count){node_number=node_count;}
+			const node *temp = head;
+			for (int i=2;i<=node_number;i++){
+				temp = temp->link;
+			}
+			return temp->data;
+		}
 
 	public:
 
@@ -37,7 +47,7 @@ class my_list{
 		}
 
 		friend std::ostream& operator<< (std::ostream &o, const my_list<T> &list) {
-			if(list.node_count == 0){return o;}
+			if(list.node_count == 0){o << "[]"; return o;}
 			const node *temp = list.head;
 			o << "[" << temp->data;
 			for (int i=1;i<list.node_count;i++){
@@ -74,16 +84,6 @@ class my_list{
 			else{node_number = node_count + index + 1;}
 			if(node_number>node_count){node_number=node_count;}
 			node *temp = head;
-			for (int i=2;i<=node_number;i++){
-				temp = temp->link;
-			}
-			return temp->data;
-		}
-
-		const T& get_data (const int &index)const{
-			int node_number = index + 1;
-			if(node_number>node_count){node_number=node_count;}
-			const node *temp = head;
 			for (int i=2;i<=node_number;i++){
 				temp = temp->link;
 			}
